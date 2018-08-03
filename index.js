@@ -1,8 +1,8 @@
 const axios = require("axios");
 const config = require("./config.json");
 
-const token = `token=${config.GROUPME_TOKEN}`
-const groupmeGroupsURL = `https://api.groupme.com/v3/groups`
+const token = `token=${config.GROUPME_TOKEN}`;
+const groupmeGroupsURL = `https://api.groupme.com/v3/groups`;
 
 /**
  * Use this function to find the id of your desired group.
@@ -24,16 +24,24 @@ const getGroups = async () => {
 /**
  * Call this function to get the URLs of the images in your chat
  */
-const getPicURLs = async () => {
-  const getMessagesURL = `${groupmeGroupsURL}/${config.GROUP_ID}/messages?${token}&limit=100`;
+const getPicURLs = async (lastMessageId = "") => {
+  const getMessagesURL = `${groupmeGroupsURL}/${config.GROUP_ID}/messages?${token}&limit=100&${lastMessageId}`;
   const response = await axios.get(getMessagesURL);
   if (response.status == 200) {
-    const messages = response.data.response.messages.filter(message => message.attachments.length !== 0)
-    // const attaches = response.data
-    console.log(messages.length)
+    const currLastMessage = response.data.response.messages.slice(-1)[0].id;
+    const messages = response.data.response.messages
+      .filter(message => message.attachments.length !== 0)
+      .map(message => message.attachments);
+    return { messages, last_id: currLastMessage };
   } else {
     console.error("Network request to Groupme API failed!");
   }
 };
 
-getPicURLs();
+const main = async () => {
+  const messages = await getPicURLs();
+  console.log(messages);
+};
+
+// main();
+getGroups()
