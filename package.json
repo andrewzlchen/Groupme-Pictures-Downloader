@@ -1,0 +1,22 @@
+{
+  "name": "groupme-pictures-downloader",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xChenny/Groupme-Pictures-Downloader.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xChenny/Groupme-Pictures-Downloader/issues"
+  },
+  "homepage": "https://github.com/xChenny/Groupme-Pictures-Downloader#readme",
+  "dependencies": {
+    "axios": "^0.18.0"
+  }
+}
