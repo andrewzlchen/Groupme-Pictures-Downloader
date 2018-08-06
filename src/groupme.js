@@ -63,17 +63,18 @@ class Groupme {
     let picUrls = [];
     let { filteredMessages, lastId, numMessages } = await this.getPicURLs();
     try {
-      while (numMessages !== 0) {
+      while (true) {
         console.log(filteredMessages);
-        for (let m of filteredMessages) picUrls = [...picUrls, m.url];
+        for (let m of filteredMessages) picUrls = [m.url, ...picUrls];
+        // this will eventually throw when there are no messages left
         let response = await this.getPicURLs(lastId);
         ({ filteredMessages, lastId, numMessages } = response);
-        if (numMessages === 0) break;
       }
-      saveJSONToFile(`${__dirname}/../data/${fileName}`, picUrls);
     } catch(err) {
-      throw err
-      saveJSONToFile(`${__dirname}/../data/${fileName}`, picUrls);
+      saveJSONToFile(`${__dirname}/../data/${fileName}`, { picUrls });
+      console.log(`The status code is: ${err.response.status}`);
+      console.log("If the error is a 304 error, everything worked as expected.");
+      console.log("If not, then please check the Groupme Developer API status codes.");
     }
   }
 }
@@ -81,6 +82,3 @@ class Groupme {
 module.exports = {
   Groupme
 };
-
-const thing = new Groupme();
-thing.main("test.json");

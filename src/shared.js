@@ -11,6 +11,16 @@ const saveJSONToFile = function(path, obj) {
   }
 };
 
+const getFileAsJSON = function(path) {
+  if (arguments.length !== 1) throw "Invalid number of args!";
+  if (!path || typeof path !== "string") throw "Invalid path!";
+  const file = fs.readFileSync(path, "utf8");
+  if (!file) throw "File at specified path is unreadable or doesn't exist!";
+  return JSON.parse(file);
+};
+
+
 module.exports = {
-  saveJSONToFile
+  saveJSONToFile,
+  getFileAsJSON
 }
