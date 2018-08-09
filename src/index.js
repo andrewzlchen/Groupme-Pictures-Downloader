@@ -1,5 +1,21 @@
-const { Groupme } = require("./groupme.js")
+#!/usr/bin/env node
 
-const GM = new Groupme()
+const { main } = require("./cli")
+const program = require("commander");
 
-GM.main("media.json")
+let subcommand 
+program
+  .arguments('<subcommand>')
+  .usage('<subcommand>')
+  .action(subcommand => {
+    try {
+      main(subcommand)
+    }
+    catch(err) {
+      console.error(err);
+    }
+  })
+  .parse(process.argv);
+
+
+  

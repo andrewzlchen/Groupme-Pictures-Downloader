@@ -1,5 +1,5 @@
 const axios = require("axios");
-const config = require("../config.json");
+const config = require("../../config.json");
 const _ = require("lodash");
 const { saveJSONToFile } = require("./shared");
 
@@ -14,6 +14,7 @@ class Groupme {
     const response = await axios.get(`${groupmeGroupsURL}?${token}`);
     if (response.status == 200) {
       return response.data.response.map(group => {
+        const name = group.name, id = group.id
         return { name, id };
       });
     } else {
@@ -78,6 +79,14 @@ class Groupme {
     }
   }
 }
+
+// const gm = new Groupme()
+
+// const tester = async () => {
+//   console.log( await gm.getGroups())
+// }
+
+// tester()
 
 module.exports = {
   Groupme
