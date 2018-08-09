@@ -18,7 +18,7 @@ If you'd like to contribute, please feel free to submit a PR!
 
 3. Get a Groupme API token from their developer site
 4. Add your token to the `config.json` file
-5. Run the Groupme.getGroups function to get the ID of the chat that you wish to get the pictures from
+5. Run the Groupme.getGroups function located in the `src/groupme.js` file to get the ID of the chat that you wish to get the pictures from
 6. Paste the chat's id into the `config.json` file.
 7. Run the Groupme.main function to get the URL of all the images in the chat
 8. Download the images by running the `local.js` file with node

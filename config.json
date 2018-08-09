@@ -1,4 +1,5 @@
 {
-  "GROUPME_TOKEN": "YOUR TOKEN HERE",
-  "GROUP_ID": "YOUR GROUP CHAT ID HERE"
+  "GROUPME_TOKEN": "Your Groupme API token here",
+  "GROUP_ID": "Your group chat's id here",
+  "TELEGRAM_BOT_API_TOKEN": "Your telegram bot api token here"
 }

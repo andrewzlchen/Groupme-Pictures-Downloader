@@ -14,6 +14,8 @@ class Groupme {
     const response = await axios.get(`${groupmeGroupsURL}?${token}`);
     if (response.status == 200) {
       return response.data.response.map(group => {
+        const { name, id } = group
+        console.log({ name, id });
         return { name, id };
       });
     } else {
@@ -82,3 +84,6 @@ class Groupme {
 module.exports = {
   Groupme
 };
+
+const gm = new Groupme()
+gm.getGroups()

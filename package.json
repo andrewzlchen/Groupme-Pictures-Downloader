@@ -19,6 +19,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "download": "^7.1.0",
-    "lodash": "^4.17.10"
+    "lodash": "^4.17.10",
+    "node-telegram-bot-api": "^0.30.0"
   }
 }
