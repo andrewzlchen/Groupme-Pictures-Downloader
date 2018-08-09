@@ -72,7 +72,7 @@ class Groupme {
       }
     } catch(err) {
       saveJSONToFile(`${__dirname}/../data/${fileName}`, { picUrls });
-      console.log(`The status code is: ${err.response.status}`);
+      console.log(`\nThe status code is: ${err.response.status}`);
       console.log("If the error is a 304 error, everything worked as expected.");
       console.log("If not, then please check the Groupme Developer API status codes.");
     }
